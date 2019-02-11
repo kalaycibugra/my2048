@@ -5,59 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     tools:context=".game">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:layout_margin="12dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_margin="12dp"
 
         >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="118dp"
+            android:layout_height="107dp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            app:srcCompat="@drawable/facebook_cover_photo_1" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="2048"
-            android:textSize="40dp"
-            android:layout_weight="2"
+            android:layout_height="77dp"
             android:layout_gravity="center"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
             android:layout_weight="2"
-            android:text="" />
+            android:background="#FFFFFF"
+            android:text="Score: sasdasdas" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="2"
-            android:text="" />
-        
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restart"
-            android:textSize="25dp"
             android:layout_gravity="center"
             android:layout_marginLeft="12dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="Restart"
+            android:textSize="25dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Undo"
-            android:textSize="25dp"
+            android:layout_gravity="center"
             android:layout_marginRight="12dp"
-            android:layout_gravity="center"/>
+            android:text="Undo"
+            android:textSize="25dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,68 +76,49 @@
 
             >
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index00"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#A3605E"
                 android:layout_margin="5dp"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="1232"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index10"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index20"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index30"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:background="#A3605E"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:background="#A3605E"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:background="#A3605E"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:background="#A3605E"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -148,32 +129,101 @@
             android:layout_marginRight="8dp"
             >
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index01"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index11"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index21"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/index31"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            >
+            <TextView
+                android:id="@+id/index02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:id="@+id/index12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:id="@+id/index22"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:text="3211"
+                />
+            <TextView
+                android:id="@+id/index32"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#A3605E"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -185,32 +235,48 @@
             android:layout_marginBottom="5dp"
         >
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/index03"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="5dp"
             android:background="#A3605E"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/index13"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="5dp"
             android:background="#A3605E"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/index23"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="5dp"
             android:background="#A3605E"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/index33"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="5dp"
             android:background="#A3605E"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
             />
     </LinearLayout>
 
