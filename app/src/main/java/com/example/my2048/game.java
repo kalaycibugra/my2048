@@ -1,5 +1,7 @@
 package com.example.my2048;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.Random;
@@ -14,6 +16,8 @@ public class game extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final data score = new data();
+        score.score1=0;
         Random rand = new Random();
         int n = rand.nextInt(4);
         int m = rand.nextInt(4);
@@ -37,35 +41,56 @@ public class game extends AppCompatActivity {
         restart.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                for(int i=0;i<4;i++){
-                    for(int j=0;j<4;j++){
-                        grid[i][j].value=0;
-                        TextView in1=(TextView) findViewById(grid[i][j].indexName);
-                        in1.setText("");
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game.this);
+                alertDialogBuilder.setMessage("Do you want to restart").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for(int i=0;i<4;i++){
+                            for(int j=0;j<4;j++){
+                                grid[i][j].value=0;
+                                TextView in1=(TextView) findViewById(grid[i][j].indexName);
+                                in1.setText("");
+                            }
+                        }
+                        score.score1=0;
+                        TextView in2=(TextView) findViewById(R.id.score);
+                        String ss=Integer.toString(score.score1);
+                        ss="Score\n"+ss;
+                        in2.setText(ss);
+
+
+                        updateGrid(grid);
                     }
-                }
-                updateGrid(grid);
+                });
+                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog=alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
         board1.setOnTouchListener(new OnSwipeTouchListener(game.this){
 
         public void onSwipeTop() {
             moveTiles(grid,2);
-            merge(grid,2);
-            assignRandom(grid);
+            merge(grid,2,score);
+            assignRandom(grid,score);
 
         }
 
         public void onSwipeRight() {
             moveTiles(grid,1);
-            merge(grid,1);
-            assignRandom(grid);
+            merge(grid,1,score);
+            assignRandom(grid,score);
         }
 
         public void onSwipeLeft() {
             moveTiles(grid,0);
-            merge(grid,0);
-            assignRandom(grid);
+            merge(grid,0,score);
+            assignRandom(grid,score);
 
         }
 
@@ -73,8 +98,8 @@ public class game extends AppCompatActivity {
 
 
             moveTiles(grid,3);
-            merge(grid,3);
-            assignRandom(grid);
+            merge(grid,3,score);
+            assignRandom(grid,score);
 
         }
 
@@ -83,7 +108,7 @@ public class game extends AppCompatActivity {
 
 
     }
-    public void merge(gridIndex[][] grid,int direction){//0:left 1:right 2:up 3:down
+    public void merge(gridIndex[][] grid,int direction,data score){//0:left 1:right 2:up 3:down
         switch (direction){
             case 0:
                 for(int i=0;i<4;i++){
@@ -92,6 +117,7 @@ public class game extends AppCompatActivity {
                             grid[i][j].value=grid[i][j].value*2;
                             grid[i][j+1].value=0;
                             moveTiles(grid,direction);
+                            score.score1=score.score1+grid[i][j].value;
                         }
                     }
                 }
@@ -103,6 +129,7 @@ public class game extends AppCompatActivity {
                             grid[i][j].value=grid[i][j].value*2;
                             grid[i][j-1].value=0;
                             moveTiles(grid,direction);
+                            score.score1=score.score1+grid[i][j].value;
                         }
                     }
                 }
@@ -114,6 +141,7 @@ public class game extends AppCompatActivity {
                             grid[i][j].value=grid[i][j].value*2;
                             grid[i+1][j].value=0;
                             moveTiles(grid,direction);
+                            score.score1=score.score1+grid[i][j].value;
                         }
                     }
                 }
@@ -125,6 +153,7 @@ public class game extends AppCompatActivity {
                             grid[i][j].value=grid[i][j].value*2;
                             grid[i-1][j].value=0;
                             moveTiles(grid,direction);
+                            score.score1=score.score1+grid[i][j].value;
                         }
                     }
                 }
@@ -204,7 +233,7 @@ public class game extends AppCompatActivity {
 
         }
     }
-    public void assignRandom(gridIndex[][] grid){
+    public void assignRandom(gridIndex[][] grid,data score){
 
         int q,w;
         Random rand = new Random();
@@ -224,6 +253,10 @@ public class game extends AppCompatActivity {
         }
         TextView in1=(TextView) findViewById(grid[q][w].indexName);
         in1.setText(Integer.toString(grid[q][w].value));
+        TextView in2=(TextView) findViewById(R.id.score);
+        String ss=Integer.toString(score.score1);
+        ss="Score\n"+ss;
+        in2.setText(ss);
         updateGrid(grid);
     }
     public void updateGrid(gridIndex[][] grid){
@@ -356,4 +389,7 @@ class gridIndex {
         public int indexName;
         public int value;
 };
+    class data{
+        public int score1;
+    }
 }
