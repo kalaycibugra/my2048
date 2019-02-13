@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="num0">#A3605E</color>
+    <color name="num2">#FFCAC2A7</color>
+    <color name="num4">#FFB3AA8E</color>
+    <color name="num8">#FFBEA75A</color>
+    <color name="num16">#FFD87151</color>
+    <color name="num32">#FF994329</color>
+    <color name="num64">#FFC0CA33</color>
+    <color name="num128">#FF727910</color>
+    <color name="num256">#FF81E285</color>
+    <color name="num512">#FF19C2D5</color>
+    <color name="num1024">#FFE53935</color>
+    <color name="num2048">#FFFDD835</color>
+    <color name="num4096">#FFEEEDEB</color>
 </resources>

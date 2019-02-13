@@ -31,6 +31,7 @@ public class game extends AppCompatActivity {
         LinearLayout board1 =(LinearLayout) findViewById(R.id.board);
         final TextView in=(TextView) findViewById(grid[n][m].indexName);
         in.setText(Integer.toString(grid[m][n].value));
+        updateGrid(grid);
 //        final TextView in1=(TextView) findViewById(R.id.index02);
         final Button restart = (Button) findViewById(R.id.restart);
         restart.setOnClickListener(new View.OnClickListener(){
@@ -43,6 +44,7 @@ public class game extends AppCompatActivity {
                         in1.setText("");
                     }
                 }
+                updateGrid(grid);
             }
         });
         board1.setOnTouchListener(new OnSwipeTouchListener(game.this){
@@ -228,6 +230,7 @@ public class game extends AppCompatActivity {
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 TextView in1=(TextView) findViewById(grid[i][j].indexName);
+                setBackColor(grid[i][j]);
                 if(grid[i][j].value!=0)
                     in1.setText(Integer.toString(grid[i][j].value));
                 else
@@ -236,6 +239,50 @@ public class game extends AppCompatActivity {
             }
         }
 
+    }
+    public void setBackColor(gridIndex cell){
+        TextView in1=(TextView) findViewById(cell.indexName);
+        switch (cell.value){
+            case 0:
+                in1.setBackgroundResource(R.color.num0);
+                break;
+            case 2:
+                in1.setBackgroundResource(R.color.num2);
+                break;
+            case 4:
+                in1.setBackgroundResource(R.color.num4);
+                break;
+            case 8:
+                in1.setBackgroundResource(R.color.num8);
+                break;
+            case 16:
+                in1.setBackgroundResource(R.color.num16);
+                break;
+            case 32:
+                in1.setBackgroundResource(R.color.num32);
+                break;
+            case 64:
+                in1.setBackgroundResource(R.color.num64);
+                break;
+            case 128:
+                in1.setBackgroundResource(R.color.num128);
+                break;
+            case 256:
+                in1.setBackgroundResource(R.color.num256);
+                break;
+            case 512:
+                in1.setBackgroundResource(R.color.num512);
+                break;
+            case 1024:
+                in1.setBackgroundResource(R.color.num1024);
+                break;
+            case 2048:
+                in1.setBackgroundResource(R.color.num2048);
+                break;
+            case 4096:
+                in1.setBackgroundResource(R.color.num4096);
+                break;
+        }
     }
     public int setTextId(int index1,int index2){
         int id=0;
