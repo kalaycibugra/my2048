@@ -48,113 +48,32 @@ public class game extends AppCompatActivity {
         board1.setOnTouchListener(new OnSwipeTouchListener(game.this){
 
         public void onSwipeTop() {
-            int j,i;
+            moveTiles(grid,2);
+            merge(grid,2);
+            assignRandom(grid);
 
-            for(int k=0;k<4;k++){
-                i=0;
-                for(j=0;j<4;j++){
-                    if(grid[j][k].value!=0){
-                        if(i<j){
-                            int tmp=grid[i][k].value;
-                            grid[i][k].value=grid[j][k].value;
-                            grid[j][k].value=tmp;
-                        }
-                        i++;
-                    }
-                }
-            }
-
-
-            Random rand = new Random();
-            int q = rand.nextInt(4);
-            int w = rand.nextInt(4);
-            grid[q][w].indexName=setTextId(q,w);
-            grid[q][w].value=2;
-            TextView in1=(TextView) findViewById(grid[q][w].indexName);
-            in1.setText(Integer.toString(grid[q][w].value));
-            updateGrid(grid);
         }
 
         public void onSwipeRight() {
-            int j,i;
-
-            for(int k=0;k<4;k++){
-                i=3;
-                for(j=3;j>=0;j--){
-                    if(grid[k][j].value!=0){
-                        if(i>j){
-                            int tmp=grid[k][i].value;
-                            grid[k][i].value=grid[k][j].value;
-                            grid[k][j].value=tmp;
-                        }
-                        i--;
-                    }
-                }
-            }
-
-            Random rand = new Random();
-            int q = rand.nextInt(4);
-            int w = rand.nextInt(4);
-            grid[q][w].indexName=setTextId(q,w);
-            grid[q][w].value=2;
-            TextView in1=(TextView) findViewById(grid[q][w].indexName);
-            in1.setText(Integer.toString(grid[q][w].value));
-            updateGrid(grid);
+            moveTiles(grid,1);
+            merge(grid,1);
+            assignRandom(grid);
         }
 
         public void onSwipeLeft() {
-            int j,i;
+            moveTiles(grid,0);
+            merge(grid,0);
+            assignRandom(grid);
 
-            for(int k=0;k<4;k++){
-                i=0;
-                for(j=0;j<4;j++){
-                    if(grid[k][j].value!=0){
-                        if(i<j){
-                            int tmp=grid[k][i].value;
-                            grid[k][i].value=grid[k][j].value;
-                            grid[k][j].value=tmp;
-                        }
-                        i++;
-                    }
-                }
-            }
-
-            Random rand = new Random();
-            int q = rand.nextInt(4);
-            int w = rand.nextInt(4);
-            grid[q][w].indexName=setTextId(q,w);
-            grid[q][w].value=4;
-            TextView in1=(TextView) findViewById(grid[q][w].indexName);
-            in1.setText(Integer.toString(grid[q][w].value));
-            updateGrid(grid);
         }
 
         public void onSwipeBottom() {
-            int j,i;
-
-            for(int k=0;k<4;k++){
-                i=3;
-                for(j=3;j>=0;j--){
-                    if(grid[j][k].value!=0){
-                        if(i>j){
-                            int tmp=grid[i][k].value;
-                            grid[i][k].value=grid[j][k].value;
-                            grid[j][k].value=tmp;
-                        }
-                        i--;
-                    }
-                }
-            }
 
 
-            Random rand = new Random();
-            int q = rand.nextInt(4);
-            int w = rand.nextInt(4);
-            grid[q][w].indexName=setTextId(q,w);
-            grid[q][w].value=2;
-            TextView in1=(TextView) findViewById(grid[q][w].indexName);
-            in1.setText(Integer.toString(grid[q][w].value));
-            updateGrid(grid);
+            moveTiles(grid,3);
+            merge(grid,3);
+            assignRandom(grid);
+
         }
 
 
@@ -162,7 +81,149 @@ public class game extends AppCompatActivity {
 
 
     }
+    public void merge(gridIndex[][] grid,int direction){//0:left 1:right 2:up 3:down
+        switch (direction){
+            case 0:
+                for(int i=0;i<4;i++){
+                    for (int j=0;j<3;j++){
+                        if(grid[i][j].value==grid[i][j+1].value){
+                            grid[i][j].value=grid[i][j].value*2;
+                            grid[i][j+1].value=0;
+                            moveTiles(grid,direction);
+                        }
+                    }
+                }
+                break;
+            case 1:
+                for(int i=0;i<4;i++){
+                    for (int j=3;j>0;j--){
+                        if(grid[i][j].value==grid[i][j-1].value){
+                            grid[i][j].value=grid[i][j].value*2;
+                            grid[i][j-1].value=0;
+                            moveTiles(grid,direction);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                for(int j=0;j<4;j++){
+                    for (int i=0;i<3;i++){
+                        if(grid[i][j].value==grid[i+1][j].value){
+                            grid[i][j].value=grid[i][j].value*2;
+                            grid[i+1][j].value=0;
+                            moveTiles(grid,direction);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for(int j=0;j<4;j++){
+                    for (int i=3;i>0;i--){
+                        if(grid[i][j].value==grid[i-1][j].value){
+                            grid[i][j].value=grid[i][j].value*2;
+                            grid[i-1][j].value=0;
+                            moveTiles(grid,direction);
+                        }
+                    }
+                }
+                break;
+        }
+    }
+    public void moveTiles(gridIndex[][] grid, int direction){//0:left 1:right 2:up 3:down
+        int i,j;
+        switch(direction){
+            case 0:
+//                int j,i;
 
+                for(int k=0;k<4;k++){
+                    i=0;
+                    for(j=0;j<4;j++){
+                        if(grid[k][j].value!=0){
+                            if(i<j){
+                                int tmp=grid[k][i].value;
+                                grid[k][i].value=grid[k][j].value;
+                                grid[k][j].value=tmp;
+                            }
+                            i++;
+                        }
+                    }
+                }
+                break;
+            case 1:
+//                int j,i;
+
+                for(int k=0;k<4;k++){
+                    i=3;
+                    for(j=3;j>=0;j--){
+                        if(grid[k][j].value!=0){
+                            if(i>j){
+                                int tmp=grid[k][i].value;
+                                grid[k][i].value=grid[k][j].value;
+                                grid[k][j].value=tmp;
+                            }
+                            i--;
+                        }
+                    }
+                }
+                break;
+            case 2:
+//                int j,i;
+
+                for(int k=0;k<4;k++){
+                    i=0;
+                    for(j=0;j<4;j++){
+                        if(grid[j][k].value!=0){
+                            if(i<j){
+                                int tmp=grid[i][k].value;
+                                grid[i][k].value=grid[j][k].value;
+                                grid[j][k].value=tmp;
+                            }
+                            i++;
+                        }
+                    }
+                }
+                break;
+            case 3:
+                for(int k=0;k<4;k++){
+                    i=3;
+                    for(j=3;j>=0;j--){
+                        if(grid[j][k].value!=0){
+                            if(i>j){
+                                int tmp=grid[i][k].value;
+                                grid[i][k].value=grid[j][k].value;
+                                grid[j][k].value=tmp;
+                            }
+                            i--;
+                        }
+                    }
+                }
+                break;
+
+
+        }
+    }
+    public void assignRandom(gridIndex[][] grid){
+
+        int q,w;
+        Random rand = new Random();
+        q = rand.nextInt(4);
+        w = rand.nextInt(4);
+        while(grid[q][w].value!=0){
+            Random rand1 = new Random();
+            q = rand1.nextInt(4);
+            w = rand1.nextInt(4);
+        }
+        int selection=rand.nextInt(3);
+        if(selection==2){
+            grid[q][w].value=4;
+        }
+        else{
+            grid[q][w].value=2;
+        }
+        TextView in1=(TextView) findViewById(grid[q][w].indexName);
+        in1.setText(Integer.toString(grid[q][w].value));
+        updateGrid(grid);
+    }
     public void updateGrid(gridIndex[][] grid){
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
