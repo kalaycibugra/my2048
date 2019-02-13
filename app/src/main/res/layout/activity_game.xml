@@ -42,20 +42,21 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
+            android:id="@+id/restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="12dp"
-            android:layout_weight="1"
             android:text="Restart"
             android:textSize="25dp" />
 
-        <TextView
+        <Button
+            android:id="@+id/undo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="12dp"
+            android:layout_marginLeft="150dp"
             android:text="Undo"
             android:textSize="25dp" />
     </LinearLayout>

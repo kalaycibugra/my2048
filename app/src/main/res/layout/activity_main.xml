@@ -22,7 +22,6 @@ android:background="#F8F7F7">
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="183dp"
         android:layout_height="91dp"
-        android:backgroundTint="#00796b"
         android:text="Start"
 
         />
