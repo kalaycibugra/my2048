@@ -17,53 +17,163 @@ public class game extends AppCompatActivity {
         Random rand = new Random();
         int n = rand.nextInt(4);
         int m = rand.nextInt(4);
-        gridIndex[][] grid = new gridIndex[4][4];
+        final gridIndex[][] grid = new gridIndex[4][4];
         for (int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 grid[i][j]=new gridIndex();
+                grid[i][j].value=0;
+                grid[i][j].indexName=setTextId(i,j);
             }
         }
-        grid[m][n].value= 4;
-        int id =0;
-        id = setTextId(m,n);
-        System.out.print(id);
-        grid[n][m].indexName=id;
+        grid[m][n].value= 2;
 
         setContentView(R.layout.activity_game);
         LinearLayout board1 =(LinearLayout) findViewById(R.id.board);
-        final TextView in=(TextView) findViewById(id);
+        final TextView in=(TextView) findViewById(grid[n][m].indexName);
         in.setText(Integer.toString(grid[m][n].value));
 //        final TextView in1=(TextView) findViewById(R.id.index02);
         final Button restart = (Button) findViewById(R.id.restart);
         restart.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                in.setText("");
-//                in1.setText("");
+                for(int i=0;i<4;i++){
+                    for(int j=0;j<4;j++){
+                        grid[i][j].value=0;
+                        TextView in1=(TextView) findViewById(grid[i][j].indexName);
+                        in1.setText("");
+                    }
+                }
             }
         });
         board1.setOnTouchListener(new OnSwipeTouchListener(game.this){
 
         public void onSwipeTop() {
+            int j,i;
 
-            in.setText("245");
+            for(int k=0;k<4;k++){
+                i=0;
+                for(j=0;j<4;j++){
+                    if(grid[j][k].value!=0){
+                        if(i<j){
+                            int tmp=grid[i][k].value;
+                            grid[i][k].value=grid[j][k].value;
+                            grid[j][k].value=tmp;
+                        }
+                        i++;
+                    }
+                }
+            }
+
+
+            Random rand = new Random();
+            int q = rand.nextInt(4);
+            int w = rand.nextInt(4);
+            grid[q][w].indexName=setTextId(q,w);
+            grid[q][w].value=2;
+            TextView in1=(TextView) findViewById(grid[q][w].indexName);
+            in1.setText(Integer.toString(grid[q][w].value));
+            updateGrid(grid);
         }
 
         public void onSwipeRight() {
-//            in1.setText("244");
+            int j,i;
+
+            for(int k=0;k<4;k++){
+                i=3;
+                for(j=3;j>=0;j--){
+                    if(grid[k][j].value!=0){
+                        if(i>j){
+                            int tmp=grid[k][i].value;
+                            grid[k][i].value=grid[k][j].value;
+                            grid[k][j].value=tmp;
+                        }
+                        i--;
+                    }
+                }
+            }
+
+            Random rand = new Random();
+            int q = rand.nextInt(4);
+            int w = rand.nextInt(4);
+            grid[q][w].indexName=setTextId(q,w);
+            grid[q][w].value=2;
+            TextView in1=(TextView) findViewById(grid[q][w].indexName);
+            in1.setText(Integer.toString(grid[q][w].value));
+            updateGrid(grid);
         }
 
         public void onSwipeLeft() {
-            in.setText("243");
+            int j,i;
+
+            for(int k=0;k<4;k++){
+                i=0;
+                for(j=0;j<4;j++){
+                    if(grid[k][j].value!=0){
+                        if(i<j){
+                            int tmp=grid[k][i].value;
+                            grid[k][i].value=grid[k][j].value;
+                            grid[k][j].value=tmp;
+                        }
+                        i++;
+                    }
+                }
+            }
+
+            Random rand = new Random();
+            int q = rand.nextInt(4);
+            int w = rand.nextInt(4);
+            grid[q][w].indexName=setTextId(q,w);
+            grid[q][w].value=4;
+            TextView in1=(TextView) findViewById(grid[q][w].indexName);
+            in1.setText(Integer.toString(grid[q][w].value));
+            updateGrid(grid);
         }
 
         public void onSwipeBottom() {
-//            in1.setText("242");
+            int j,i;
+
+            for(int k=0;k<4;k++){
+                i=3;
+                for(j=3;j>=0;j--){
+                    if(grid[j][k].value!=0){
+                        if(i>j){
+                            int tmp=grid[i][k].value;
+                            grid[i][k].value=grid[j][k].value;
+                            grid[j][k].value=tmp;
+                        }
+                        i--;
+                    }
+                }
+            }
+
+
+            Random rand = new Random();
+            int q = rand.nextInt(4);
+            int w = rand.nextInt(4);
+            grid[q][w].indexName=setTextId(q,w);
+            grid[q][w].value=2;
+            TextView in1=(TextView) findViewById(grid[q][w].indexName);
+            in1.setText(Integer.toString(grid[q][w].value));
+            updateGrid(grid);
         }
 
 
     });
 
+
+    }
+
+    public void updateGrid(gridIndex[][] grid){
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                TextView in1=(TextView) findViewById(grid[i][j].indexName);
+                if(grid[i][j].value!=0)
+                    in1.setText(Integer.toString(grid[i][j].value));
+                else
+                    in1.setText("");
+
+            }
+        }
 
     }
     public int setTextId(int index1,int index2){

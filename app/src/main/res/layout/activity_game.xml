@@ -87,10 +87,9 @@
                 android:gravity="center"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:text="1232"
                 />
             <TextView
-                android:id="@+id/index10"
+                android:id="@+id/index01"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -101,7 +100,7 @@
                 android:textSize="25dp"
                 />
             <TextView
-                android:id="@+id/index20"
+                android:id="@+id/index02"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -112,7 +111,7 @@
                 android:textSize="25dp"
                 />
             <TextView
-                android:id="@+id/index30"
+                android:id="@+id/index03"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -131,7 +130,7 @@
             android:layout_marginRight="8dp"
             >
             <TextView
-                android:id="@+id/index01"
+                android:id="@+id/index10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -153,7 +152,7 @@
                 android:textSize="25dp"
                 />
             <TextView
-                android:id="@+id/index21"
+                android:id="@+id/index12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -164,7 +163,7 @@
                 android:textSize="25dp"
                 />
             <TextView
-                android:id="@+id/index31"
+                android:id="@+id/index13"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -183,7 +182,7 @@
             android:layout_marginRight="8dp"
             >
             <TextView
-                android:id="@+id/index02"
+                android:id="@+id/index20"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -194,7 +193,7 @@
                 android:textSize="25dp"
                 />
             <TextView
-                android:id="@+id/index12"
+                android:id="@+id/index21"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -214,10 +213,9 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="25dp"
-                android:text="3211"
                 />
             <TextView
-                android:id="@+id/index32"
+                android:id="@+id/index23"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -237,7 +235,7 @@
             android:layout_marginBottom="5dp"
         >
         <TextView
-            android:id="@+id/index03"
+            android:id="@+id/index30"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -248,7 +246,7 @@
             android:textSize="25dp"
             />
         <TextView
-            android:id="@+id/index13"
+            android:id="@+id/index31"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -259,7 +257,7 @@
             android:textSize="25dp"
             />
         <TextView
-            android:id="@+id/index23"
+            android:id="@+id/index32"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
