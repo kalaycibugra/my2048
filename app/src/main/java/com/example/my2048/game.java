@@ -17,16 +17,23 @@ public class game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final data score = new data();
+        final data pre_score = new data();
+        pre_score.score1=0;
         score.score1=0;
         Random rand = new Random();
         int n = rand.nextInt(4);
         int m = rand.nextInt(4);
         final gridIndex[][] grid = new gridIndex[4][4];
+        final gridIndex[][] undoGrid = new gridIndex[4][4];
         for (int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 grid[i][j]=new gridIndex();
                 grid[i][j].value=0;
                 grid[i][j].indexName=setTextId(i,j);
+
+                undoGrid[i][j]=new gridIndex();
+                undoGrid[i][j].value=0;
+                undoGrid[i][j].indexName=setTextId(i,j);
             }
         }
         grid[m][n].value= 2;
@@ -37,6 +44,25 @@ public class game extends AppCompatActivity {
         in.setText(Integer.toString(grid[m][n].value));
         updateGrid(grid);
 //        final TextView in1=(TextView) findViewById(R.id.index02);
+        final Button undo = (Button) findViewById(R.id.undo);
+
+        undo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i=0;i<4;i++){
+                    for(int j=0;j<4;j++){
+                        grid[i][j].value=undoGrid[i][j].value;
+                    }
+                }
+                score.score1=pre_score.score1;
+                TextView in2=(TextView) findViewById(R.id.score);
+                String ss=Integer.toString(score.score1);
+                ss="Score\n"+ss;
+                in2.setText(ss);
+                updateGrid(grid);
+            }
+
+        });
         final Button restart = (Button) findViewById(R.id.restart);
         restart.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -75,20 +101,27 @@ public class game extends AppCompatActivity {
         board1.setOnTouchListener(new OnSwipeTouchListener(game.this){
 
         public void onSwipeTop() {
+
+            copyGrid(grid,undoGrid);
             moveTiles(grid,2);
+            pre_score.score1=score.score1;
             merge(grid,2,score);
             assignRandom(grid,score);
 
         }
 
         public void onSwipeRight() {
+            copyGrid(grid,undoGrid);
             moveTiles(grid,1);
+            pre_score.score1=score.score1;
             merge(grid,1,score);
             assignRandom(grid,score);
         }
 
         public void onSwipeLeft() {
+            copyGrid(grid,undoGrid);
             moveTiles(grid,0);
+            pre_score.score1=score.score1;
             merge(grid,0,score);
             assignRandom(grid,score);
 
@@ -96,8 +129,9 @@ public class game extends AppCompatActivity {
 
         public void onSwipeBottom() {
 
-
+            copyGrid(grid,undoGrid);
             moveTiles(grid,3);
+            pre_score.score1=score.score1;
             merge(grid,3,score);
             assignRandom(grid,score);
 
@@ -244,7 +278,7 @@ public class game extends AppCompatActivity {
             q = rand1.nextInt(4);
             w = rand1.nextInt(4);
         }
-        int selection=rand.nextInt(3);
+        int selection=rand.nextInt(6);
         if(selection==2){
             grid[q][w].value=4;
         }
@@ -268,7 +302,6 @@ public class game extends AppCompatActivity {
                     in1.setText(Integer.toString(grid[i][j].value));
                 else
                     in1.setText("");
-
             }
         }
 
@@ -384,6 +417,13 @@ public class game extends AppCompatActivity {
             }
         }
         return id;
+    }
+    public void copyGrid(gridIndex[][] grid,gridIndex[][] undo){
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                undo[i][j].value=grid[i][j].value;
+            }
+        }
     }
 class gridIndex {
         public int indexName;
