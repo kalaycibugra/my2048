@@ -11,4 +11,4 @@ How to play:
 
 -Restart and undo buttons to restart and undo the last swipe
 
-
+APK File link: https://drive.google.com/open?id=1RaupdE3WhqB5QNEyOSqTNkzNGLfYVGWD
